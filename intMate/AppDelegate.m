@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <Parse/Parse.h>
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    //[Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"zKzvvKcxE6Zj2jOaxvMaR1m7TIQ2W7PBU3cuZX5O"
+                  clientKey:@"TnhVPG3qDmVMLlvIzqcPNk5tNpYscxG91sViy6R2"];
+    
+    // [Optional] Track statistics around application opens.
+    [self customizedUserInterface];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
 
@@ -42,4 +53,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+#pragma- helper
+-(void)customizedUserInterface{
+   
+    //customzied the nav bar
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,nil]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    //customized ta bar
+     [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+}
 @end
